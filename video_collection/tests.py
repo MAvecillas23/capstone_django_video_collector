@@ -177,3 +177,5 @@ class TestVideoModel(TestCase):
             Video.objects.create(name='XYZ', notes='example', url='https://www.youtube.com/watch?v=123')
 
 
+class TestVideoDetails(TestCase):
+    pass

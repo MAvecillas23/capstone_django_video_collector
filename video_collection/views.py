@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .forms import VideoForm, SearchForm  # import to access views.py VideoForms object and SearchForm
 from django.contrib import messages # this is for temporary messages ex. "Success adding video" when video is added
 from .models import Video   # querying databases and work with the Video class
@@ -62,6 +62,16 @@ def video_list(request):
 
     # render video_list page with the list of videos
     return render(request, 'video_collection/video_list.html', {'videos': videos, 'search_form': search_form})
+
+
+# gets the details of a video that when the video name link on video_list page is clicked
+def video_details(request, video_pk):
+    # when video name is clicked in video_list... get the primary key to find the Video object with that PK
+    # if there is no PK that matches raise a 404 error
+    video = get_object_or_404(Video, pk=video_pk)
+
+    # render template with video object that matches primary key
+    return render(request, 'video_collection/video_details.html', {'video': video})
 
 
 
