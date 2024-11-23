@@ -1,0 +1,10 @@
+/* navigation are for the navigation links from base.html */
+.navigation {
+    margin: 20px;
+
+}
+
+.navigation > a {
+    color: white;
+    padding-right: 30px;
+}

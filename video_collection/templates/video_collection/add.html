@@ -1,0 +1,30 @@
+<!-- page for adding a new video -->
+
+{% extends 'video_collection/base.html '%}
+{% block content %}
+
+<h2>Add new video</h2>
+
+<!-- This for loop is for displaying temporary messages to user i.e. success or no success adding video -->
+{% for message in messages %}
+    <li>{{ message }}</li>
+{% endfor %}
+
+<!-- inside the form tag, POST is asking the server to make changes/ updates
+ action is referencing to the urls.py add_video path name-->
+<form method="POST" action="{% url 'add_video' %}">
+<!--    need this csrf_token or page won't work without it-->
+    {% csrf_token %}
+<!--    form won't work without this new_video_form variable object -->
+    {{ new_video_form }}
+
+    <button submit="submit">Add video</button>
+
+</form>
+
+
+
+
+
+
+{% endblock %}

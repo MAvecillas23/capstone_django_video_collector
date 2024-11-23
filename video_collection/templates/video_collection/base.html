@@ -1,0 +1,28 @@
+<!-- This html file will have links/ text/ buttons/ etc. or anything that you want to be on every single
+other html file that is created -->
+
+{% load static %}
+
+<html>
+<head>
+    <title>Video Collection</title>
+<!--    watercss  style-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/dark.css">
+<!--    link to our own css-->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+    {% block content %}
+    {% endblock %}
+
+    <hr>
+<!--    Navigation links for home, add video, and video list-->
+    <div class="navigation">
+        <a href="{% url 'home' %}">Home</a>
+        <a href="{% url 'video_list' %}">Video List</a>
+        <a href="{% url 'add_video' %}">Add Video</a>
+    </div>
+
+</body>
+</html>

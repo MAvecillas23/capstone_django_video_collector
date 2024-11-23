@@ -1,0 +1,48 @@
+{% extends 'video_collection/base.html' %}
+{% block content %}
+
+<h2>Video List</h2>
+
+<!-- Holds the search form so user can enter a search term and get matches -->
+<h3>Search Videos</h3>
+<form method="GET" action="{% url 'video_list' %}">
+    {{ search_form }}
+    <button type="submit">Search</button>
+
+</form>
+<!-- link that "clears" search but basically redirects back to video_list with no queries when
+the Clear button is clicked-->
+<a href="{% url 'video_list' %}">
+    <button>Clear Search</button>
+</a>
+
+<!-- This header gets the length of the video list-->
+<!--video{{ videos|length|pluralize }} checks how many videos are in the list
+if there is more than one "videos" is displayed... if there is 1 video "video" is displayed-->
+<h3>{{ videos|length }} Video{{ videos|length|pluralize }}</h3>
+
+
+<!-- for loop for the list of videos-->
+{% for video in videos %}
+<!-- for every video: display the name notes and the url-->
+    <div>
+        <h3>{{ video.name }}</h3>
+        <p>{{ video.notes }}</p>
+        <iframe width="420" height="315" src="https://youtube.com/embed/{{video.video_id}}"></iframe>
+<!--        anchor tag for url so you can click on the link and watch video-->
+        <a href="{{ video.url }}">{{ video.url }}</a>
+    </div>
+
+{% empty %}
+<p>No videos</p>
+{% endfor %}
+
+
+
+
+
+
+
+
+
+{% endblock %}
